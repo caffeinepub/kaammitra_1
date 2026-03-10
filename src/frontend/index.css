@@ -1,0 +1,123 @@
+@font-face {
+  font-family: "Outfit";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/assets/fonts/Outfit.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+
+    /* Dark background: deep charcoal */
+    --background: 0.13 0.01 260;
+    --foreground: 0.95 0.008 240;
+
+    --card: 0.17 0.015 260;
+    --card-foreground: 0.95 0.008 240;
+
+    --popover: 0.17 0.015 260;
+    --popover-foreground: 0.95 0.008 240;
+
+    /* Orange primary */
+    --primary: 0.72 0.2 48;
+    --primary-foreground: 0.1 0.02 48;
+
+    --secondary: 0.22 0.02 260;
+    --secondary-foreground: 0.85 0.01 240;
+
+    --muted: 0.22 0.015 260;
+    --muted-foreground: 0.6 0.02 240;
+
+    --accent: 0.72 0.2 48;
+    --accent-foreground: 0.1 0.02 48;
+
+    --destructive: 0.6 0.22 25;
+    --destructive-foreground: 0.98 0.01 0;
+
+    --border: 0.25 0.015 260;
+    --input: 0.25 0.015 260;
+    --ring: 0.72 0.2 48;
+
+    --radius: 1rem;
+
+    --chart-1: 0.72 0.2 48;
+    --chart-2: 0.65 0.18 220;
+    --chart-3: 0.6 0.18 140;
+    --chart-4: 0.68 0.18 290;
+    --chart-5: 0.65 0.2 160;
+
+    --sidebar: 0.17 0.015 260;
+    --sidebar-foreground: 0.95 0.008 240;
+    --sidebar-primary: 0.72 0.2 48;
+    --sidebar-primary-foreground: 0.1 0.02 48;
+    --sidebar-accent: 0.22 0.02 260;
+    --sidebar-accent-foreground: 0.85 0.01 240;
+    --sidebar-border: 0.25 0.015 260;
+    --sidebar-ring: 0.72 0.2 48;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Mobile-first app container */
+.app-container {
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  background: oklch(var(--background));
+}
+
+/* Desktop frame effect */
+@media (min-width: 520px) {
+  body {
+    background: oklch(0.09 0.01 260);
+  }
+  .app-container {
+    box-shadow: 0 0 60px oklch(0 0 0 / 0.6), 0 0 0 1px oklch(var(--border));
+  }
+}
+
+/* Category chip colors */
+.chip-orange { background: oklch(0.72 0.2 48 / 0.2); color: oklch(0.85 0.18 48); border-color: oklch(0.72 0.2 48 / 0.4); }
+.chip-blue { background: oklch(0.58 0.18 220 / 0.2); color: oklch(0.78 0.15 220); border-color: oklch(0.58 0.18 220 / 0.4); }
+.chip-green { background: oklch(0.6 0.18 140 / 0.2); color: oklch(0.78 0.15 140); border-color: oklch(0.6 0.18 140 / 0.4); }
+.chip-purple { background: oklch(0.6 0.18 290 / 0.2); color: oklch(0.78 0.15 290); border-color: oklch(0.6 0.18 290 / 0.4); }
+.chip-red { background: oklch(0.6 0.22 25 / 0.2); color: oklch(0.78 0.18 25); border-color: oklch(0.6 0.22 25 / 0.4); }
+.chip-teal { background: oklch(0.62 0.16 180 / 0.2); color: oklch(0.8 0.14 180); border-color: oklch(0.62 0.16 180 / 0.4); }
+.chip-yellow { background: oklch(0.78 0.18 80 / 0.2); color: oklch(0.88 0.18 80); border-color: oklch(0.78 0.18 80 / 0.4); }
+.chip-pink { background: oklch(0.65 0.2 340 / 0.2); color: oklch(0.82 0.17 340); border-color: oklch(0.65 0.2 340 / 0.4); }
+
+/* Scroll snap for category chips */
+.chips-scroll {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+.chips-scroll::-webkit-scrollbar { display: none; }
